@@ -23,8 +23,9 @@ class LDDMM(Registration):
 
         self.vector_fields.update()
         self.integrate_vector_fields()
-        self.metric = torch.sum(torch.stack([self.vector_fields[i] ** 2 * self.As[-1]
-                                          for i in range(self.n_step + 1)], 0))
+        self.metric = torch.sum(torch.stack(
+            [self.vector_fields[i] ** 2 * self.As[-1]
+                                          for i in range(self.n_step + 1)], 0))/self.n_step
 
 
     def integrate_vector_fields(self):
