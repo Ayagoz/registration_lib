@@ -40,7 +40,7 @@ class LDDMM(Registration):
 
     def execute(self):
         warp = Deformation(shape=self.shape)
-        self.resuting_vector_fields = []
+        self.resulting_vector_fields = []
         self.resulting_metric = []
         self.As = []
         for n_iter, resolution, sigma, vf in zip(self.n_iters,
@@ -62,7 +62,7 @@ class LDDMM(Registration):
             self.set_vector_fields(shape, vf)
 
             grid = self.optimization(fixed, moving, n_iter, resolution)
-            self.resuting_vector_fields += [self.vector_fields]
+            self.resulting_vector_fields += [self.vector_fields]
             self.resulting_metric += [self.metric*resolution]
             warp += Deformation(grid=grid)
 
